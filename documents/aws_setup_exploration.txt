@@ -1,0 +1,58 @@
+AWS CLI Credential Automation Script Documentation
+----------------------------------------------------------------
+Script Name: setup_aws.sh
+
+Purpose:
+Automates the setup of AWS CLI credentials and configuration files
+for a user on a local machine or EC2 instance.
+
+This script:
+- Creates the AWS credentials file 
+- Creates the AWS config file
+- Sets default region and output format
+- Avoids manual editing of AWS configuration files
+
+Script Contents:
+----------------
+#!/bin/bash
+
+# Replace these with your IAM user's credentials
+AWS_ACCESS_KEY_ID="<add_your_aws_accesskey_here>"
+AWS_SECRET_ACCESS_KEY="<add_your_aws_secretkey_here>"
+AWS_DEFAULT_REGION="ap-south-1"
+AWS_OUTPUT_FORMAT="json"
+
+# Create AWS credentials directory if it doesn't exist
+mkdir -p ~/.aws
+
+# Write credentials file
+cat > ~/.aws/credentials <<EOL
+[default]
+aws_access_key_id = $AWS_ACCESS_KEY_ID
+aws_secret_access_key = $AWS_SECRET_ACCESS_KEY
+EOL
+
+# Write config file
+cat > ~/.aws/config <<EOL
+[default]
+region = $AWS_DEFAULT_REGION
+output = $AWS_OUTPUT_FORMAT
+EOL
+
+echo "AWS credentials and config files created successfully!"
+
+---
+
+Usage Instructions:
+-------------------
+1. Open a terminal (Linux / macOS) or Git Bash/wsl for Windows.
+2. Make the script executable:
+   chmod +x setup_aws.sh
+3. Edit the script to replace placeholders with your AWS IAM credentials:
+   AWS_ACCESS_KEY_ID="YOUR_ACCESS_KEY"
+   AWS_SECRET_ACCESS_KEY="YOUR_SECRET_KEY"
+4. Run the script:
+   ./setup_aws.sh
+5. Verify credentials:
+   aws sts get-caller-identity
+   This should return your IAM user details if the credentials are correct.
