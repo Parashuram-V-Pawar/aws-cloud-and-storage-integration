@@ -1,0 +1,50 @@
+Part 1: Cloud & AWS Understanding
+
+1. What cloud computing is:
+Ans: loud computing is the delivery of computing services—like servers, storage, databases, 
+   software the Internet.
+
+   The main advantages are:
+   * Scalable and Flexible: We can expand or shrink the resources based on our requirements.
+   * Pay as you go model: Here we will only pay for resources we used.
+   * No on-premises Hardware: We don't need to buy or manage any servers or Hardwares.
+
+2. Differences between IaaS, PaaS, and SaaS:
+Ans. IaaS: Infrastructure as a Service:
+    * It is like a virtual machine where we will get hardware and we only need to manage OS,
+        apps and data. Provider manages the hardware.
+    
+    PaaS: Platform as a Service: 
+    * It is a service where provider manages the OS and runtime environments and we only focus on
+        deploying and running our applications on it.
+
+    SaaS: Software as a Service:
+    * Here everything is managed by the service provider and we only use the software.
+
+3. Why AWS is used and common real-world use cases
+Ans: AWS is used because of it:
+    * Global infrastructure with multiple regions & availability zones
+    * Scalable, reliable, secure
+    * Pay-as-you-go (cost-efficient)
+    * Huge ecosystem of services for compute, storage, ML, databases, networking
+
+    Real-World Use Cases:
+    * Hosting websites & applications
+    * Data storage and backup 
+    * Big data analytics 
+    * Machine Learning & AI 
+    * Streaming and content delivery
+
+4. Purpose of EC2 and S3 in a cloud architecture
+Ans: EC2 (Elastic Compute Cloud):
+    * Provides virtual servers to run applications
+    * Scalable: can launch multiple instances based on demand
+    
+    S3 (Simple Storage Service):
+    * Provides object storage in the cloud
+    * Durable and scalable for storing files (CSV, images, backups)
+    
+    Key difference:
+    * EC2 = compute 
+    * S3 = storage 
+
