@@ -2,13 +2,15 @@ import boto3
 import os
 import botocore
 import logging
-import hashlib
 
+# Set up logging
 logging.basicConfig(level=logging.INFO)
 
+# Get S3 client
 def get_s3_client(region_name):
     return boto3.client("s3", region_name=region_name)
 
+# Upload file to S3
 def upload_file(s3_client, bucket_name, file_path, object_name=None):
     if object_name is None:
         object_name = os.path.basename(file_path)
@@ -30,6 +32,7 @@ def upload_file(s3_client, bucket_name, file_path, object_name=None):
     except Exception as e:
         logging.error(f"Error uploading file: {e}")
 
+# Download file from S3
 def download_file(s3_client, bucket_name, s3_key, local_path):
     os.makedirs(os.path.dirname(local_path), exist_ok=True)
     try:
@@ -38,6 +41,7 @@ def download_file(s3_client, bucket_name, s3_key, local_path):
     except botocore.exceptions.ClientError as e:
         logging.error(f"Error downloading file: {e}")
 
+# Verify file integrity by comparing sizes
 def verify_file_integrity(s3_client, bucket_name, s3_key, local_path):
     try:
         response = s3_client.head_object(Bucket=bucket_name, Key=s3_key)
@@ -54,6 +58,7 @@ def verify_file_integrity(s3_client, bucket_name, s3_key, local_path):
     except Exception as e:
         logging.error("Error verifying integrity: %s", e)
 
+# List files in S3 bucket
 def list_files(s3_client, bucket_name, prefix=''):
     try:
         response = s3_client.list_objects_v2(Bucket=bucket_name, Prefix=prefix)
