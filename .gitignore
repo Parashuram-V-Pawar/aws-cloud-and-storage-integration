@@ -1,0 +1,8 @@
+.DS_Store
+
+.vscode/
+
+data/
+
+__pycache__/
+*.py[cod]
