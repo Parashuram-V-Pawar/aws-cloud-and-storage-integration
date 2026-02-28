@@ -1,0 +1,16 @@
+Part 5: EC2 Context (Conceptual + Optional Hands-on):
+
+1. How the same Python scripts would run on an EC2 instance
+Ans: The python scripts would run similarly on an EC2 instance as they run on local machine.
+    Because, EC2 is just another virtual machine it only need to have Python, Boto3 and necessary 
+    dependencies installed.
+
+2. Difference between running scripts locally vs on EC2
+Ans: THe main difference is availability, scalability and security.
+    Where, in local machine we need to keep it on always to make it available and on EC2 it will be always available.
+    In local machine we have limited resources but on EC2 we can scale it based on requirements.
+    In local machine it uses stored access keys to access resources whereas, in EC2 it uses IAM roles which provides controlled access.
+
+3. How IAM roles can replace access keys on EC2
+Ans: We can create IAM role with S3 permissions and attach it to the EC2 instance.
+    Here, it doesn't require access keys as controlled access is given through IAM Roles.
