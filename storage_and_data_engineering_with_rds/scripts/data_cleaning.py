@@ -2,6 +2,7 @@ import pandas as pd
 import logging
 from config.s3_client_config import *
 
+logging.basicConfig(level=logging.INFO)
 s3 = get_s3_client()
 
 def read_csv_s3(bucket = BUCKET_NAME, s3_key = S3_RAW_UPLOAD_KEY):
@@ -35,7 +36,7 @@ def data_cleaning(data):
 def upload_cleaned_data(data, bucket_name = BUCKET_NAME, s3_key = S3_PROCESSED_UPLOAD_KEY):
     logging.info("Uploading cleaned data to S3...")
     data.to_csv(f"s3://{bucket_name}/{s3_key}")
-    logging.info("Upload successful: s3://{bucket_name}/{s3_key}")
+    logging.info(f"Upload successful: s3://{bucket_name}/{s3_key}")
 
 data = read_csv_s3(BUCKET_NAME,S3_RAW_UPLOAD_KEY)
 cleaned_data = data_cleaning(data)
