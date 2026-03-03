@@ -2,11 +2,11 @@
 import os
 import logging
 from botocore.exceptions import *
-from config.s3_client_config import get_s3_client, BUCKET_NAME, LOCAL_UPLOAD_FILE, S3_UPLOAD_KEY
+from config.s3_client_config import get_s3_client, BUCKET_NAME, LOCAL_UPLOAD_FILE, S3_RAW_UPLOAD_KEY
 
 logging.basicConfig(level=logging.INFO)
 
-def upload_file(local_file = LOCAL_UPLOAD_FILE, s3_key = S3_UPLOAD_KEY, bucket_name = BUCKET_NAME):
+def upload_file(local_file = LOCAL_UPLOAD_FILE, s3_key = S3_RAW_UPLOAD_KEY, bucket_name = BUCKET_NAME):
     s3 = get_s3_client()
 
     if not os.path.exists(local_file):
