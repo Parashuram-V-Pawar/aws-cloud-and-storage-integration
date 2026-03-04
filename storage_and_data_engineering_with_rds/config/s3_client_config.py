@@ -11,7 +11,7 @@ def get_s3_client():
     return session.client("s3")
 
 # File paths
-LOCAL_UPLOAD_FILE = os.getenv("LOCAL_UPLOAD_FILE", "data/superstore_sales_6000_records.csv")
-S3_RAW_UPLOAD_KEY = os.getenv("S3_UPLOAD_KEY", "raw/superstore_sales_6000_records.csv")
-LOCAL_DOWNLOAD_FILE = os.getenv("LOCAL_DOWNLOAD_FILE", "download/superstore_sales_6000_records.csv")
-S3_PROCESSED_UPLOAD_KEY = os.getenv("S3_PROCESSED_UPLOAD_KEY", "processed/cleaned_superstore_sales_6000_records.csv")
+LOCAL_UPLOAD_FILE = os.getenv("LOCAL_UPLOAD_FILE", "data/superstore_sales.csv")
+S3_RAW_UPLOAD_KEY = os.getenv("S3_UPLOAD_KEY", "raw/superstore_sales.csv")
+LOCAL_DOWNLOAD_FILE = os.getenv("LOCAL_DOWNLOAD_FILE", "download/superstore_sales.csv")
+S3_PROCESSED_UPLOAD_KEY = os.getenv("S3_PROCESSED_UPLOAD_KEY", "processed/cleaned_superstore_sales.csv")
