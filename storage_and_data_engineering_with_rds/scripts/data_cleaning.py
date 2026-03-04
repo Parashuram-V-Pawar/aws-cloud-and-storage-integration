@@ -29,7 +29,7 @@ def data_cleaning(data):
     for col in numeric_cols:
         data[col] = pd.to_numeric(data[col], errors="coerce")
     fill_values = {
-        "customer_name": "Undefined",
+        "customer_id": "Undefined",
         "segment": "Undefined",
         "region": "Undefined",
         "country": "Undefined",
@@ -70,7 +70,7 @@ def generate_summary_metrics(data, bucket_name = BUCKET_NAME):
         "total_revenue": [total_sales],
         "total_profit": [total_profit],
         "total_orders": [data["order_id"].nunique()],
-        "total_customers": [data["customer_name"].nunique()],
+        "total_customers": [data["customer_id"].nunique()],
         "total_quantity_sold": [data["quantity"].sum()],
         "average_order_value": [
             data.groupby("order_id")["sales"].sum().mean()
