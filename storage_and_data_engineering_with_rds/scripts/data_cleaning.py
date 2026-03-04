@@ -80,8 +80,8 @@ def generate_summary_metrics(data, bucket_name = BUCKET_NAME):
         ]
     })
     # Save to S3
-    summary_metrics.to_csv(f"s3://{bucket_name}/processed/summary_metrics.csv", index=False)
-    logging.info(f"Summary metrics generated and uploaded to S3: s3://{bucket_name}/processed/summary_metrics.csv")
+    summary_metrics.to_parquet(f"s3://{bucket_name}/processed/summary_metrics.parquet", index=False)
+    logging.info(f"Summary metrics generated and uploaded to S3: s3://{bucket_name}/processed/summary_metrics.parquet")
 
 # -----------------------------------------------------------------------
 # Group-wise Aggregations functions
@@ -95,8 +95,8 @@ def sales_by_region(data, bucket_name = BUCKET_NAME):
         order_count=("order_id", "nunique")
     ).reset_index()
     # Save to S3
-    sales_by_region_agg.to_csv(f"s3://{bucket_name}/processed/sales_by_region.csv", index=False)
-    logging.info(f"Sales by region metrics generated and uploaded to S3: s3://{bucket_name}/processed/sales_by_region.csv")
+    sales_by_region_agg.to_parquet(f"s3://{bucket_name}/processed/sales_by_region.parquet", index=False)
+    logging.info(f"Sales by region metrics generated and uploaded to S3: s3://{bucket_name}/processed/sales_by_region.parquet")
 
 def sales_by_category(data, bucket_name = BUCKET_NAME):
     logging.info("Generating sales by category...")
@@ -106,8 +106,8 @@ def sales_by_category(data, bucket_name = BUCKET_NAME):
         avg_discount=("discount", "mean")
     ).reset_index()
     # Save to S3
-    sales_by_category_agg.to_csv(f"s3://{bucket_name}/processed/sales_by_category.csv", index=False)
-    logging.info(f"Sales by category metrics generated and uploaded to S3: s3://{bucket_name}/processed/sales_by_category.csv")
+    sales_by_category_agg.to_parquet(f"s3://{bucket_name}/processed/sales_by_category.parquet", index=False)
+    logging.info(f"Sales by category metrics generated and uploaded to S3: s3://{bucket_name}/processed/sales_by_category.parquet")
 
 # -----------------------------------------------------------------------
 # Date-Based Analysis
@@ -122,8 +122,8 @@ def monthly_sales(data, bucket_name = BUCKET_NAME):
         total_profit=("profit", "sum")
     ).reset_index()
     # Save to S3
-    monthly_sales.to_csv(f"s3://{bucket_name}/processed/monthly_sales.csv", index=False)
-    logging.info(f"Monthly sales metrics generated and uploaded to S3: s3://{bucket_name}/processed/monthly_sales.csv")
+    monthly_sales.to_parquet(f"s3://{bucket_name}/processed/monthly_sales.parquet", index=False)
+    logging.info(f"Monthly sales metrics generated and uploaded to S3: s3://{bucket_name}/processed/monthly_sales.parquet")
 
 # -----------------------------------------------------------------------
 # Main function to run all steps
