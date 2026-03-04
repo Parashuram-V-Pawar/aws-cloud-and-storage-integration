@@ -1,6 +1,6 @@
-import pyodbc
 import logging
 import pandas as pd
+from config.db_connection import get_cursor
 from config.s3_client_config import BUCKET_NAME
 from scripts.download_data import download_file
 
@@ -10,15 +10,7 @@ logging.basicConfig(level=logging.INFO)
 # -----------------------------------------------------------------------
 # Establish a connection to the RDS SQL Server database using pyodbc
 # -----------------------------------------------------------------------
-conn = pyodbc.connect(
-    "DRIVER={ODBC Driver 18 for SQL Server};"
-    "SERVER=mssql-db.c1as6ckwkh8m.ap-south-1.rds.amazonaws.com;"
-    "DATABASE=superstore_db;"
-    "UID=admin;"
-    "PWD=Parashu8050;"
-    "TrustServerCertificate=yes;"
-)
-cursor = conn.cursor()
+cursor, conn = get_cursor()
 
 # -----------------------------------------------------------------------
 # Create the 'superstore_sales' table if it doesn't exist
