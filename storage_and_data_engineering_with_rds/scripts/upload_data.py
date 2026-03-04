@@ -6,9 +6,11 @@ from config.s3_client_config import get_s3_client, BUCKET_NAME, LOCAL_UPLOAD_FIL
 
 logging.basicConfig(level=logging.INFO)
 
+# -----------------------------------------------------------------------
+# Function to upload file to S3
+# -----------------------------------------------------------------------
 def upload_file(local_file = LOCAL_UPLOAD_FILE, s3_key = S3_RAW_UPLOAD_KEY, bucket_name = BUCKET_NAME):
     s3 = get_s3_client()
-
     if not os.path.exists(local_file):
         logging.error("Local file does not exist.")
         return
@@ -25,7 +27,10 @@ def upload_file(local_file = LOCAL_UPLOAD_FILE, s3_key = S3_RAW_UPLOAD_KEY, buck
         logging.error("AWS credentials not available.")
     except Exception as e:
         logging.error(f"Upload failed: {e}")
-
+        
+# -----------------------------------------------------------------------
+# Function to list files in S3 bucket
+# -----------------------------------------------------------------------
 def list_files_in_bucket(bucket_name = BUCKET_NAME):
     s3 = get_s3_client()
     try:
@@ -39,6 +44,9 @@ def list_files_in_bucket(bucket_name = BUCKET_NAME):
     except Exception as e:
         logging.error(f"Failed to list files: {e}")
         
+# -----------------------------------------------------------------------
+# Main execution
+# -----------------------------------------------------------------------
 if __name__ == "__main__":
     upload_file()
     list_files_in_bucket()
