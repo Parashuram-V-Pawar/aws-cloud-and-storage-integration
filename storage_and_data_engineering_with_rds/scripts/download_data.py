@@ -6,7 +6,9 @@ from config.s3_client_config import get_s3_client, BUCKET_NAME, LOCAL_DOWNLOAD_F
 
 logging.basicConfig(level=logging.INFO)
 
-# function to list files in S3 bucket
+# -----------------------------------------------------------------------
+# Function to list files in S3 bucket
+# -----------------------------------------------------------------------
 def list_files_in_bucket(bucket_name = BUCKET_NAME):
     s3 = get_s3_client()
     try:
@@ -19,12 +21,12 @@ def list_files_in_bucket(bucket_name = BUCKET_NAME):
             logging.info(f"No files found in bucket '{bucket_name}'.")
     except Exception as e:
         logging.error(f"Failed to list files: {e}")
-
+# -----------------------------------------------------------------------
 # Function to download a files from S3 bucket
+# -----------------------------------------------------------------------
 def download_file(local_download_file = LOCAL_DOWNLOAD_FILE, s3_key = S3_RAW_UPLOAD_KEY, bucket_name = BUCKET_NAME):
     s3 = get_s3_client()
     directory = os.path.dirname(local_download_file)
-
     # Checks if download directory exists, if not creates it
     if directory: 
         os.makedirs(directory, exist_ok=True)
@@ -45,6 +47,9 @@ def download_file(local_download_file = LOCAL_DOWNLOAD_FILE, s3_key = S3_RAW_UPL
     except Exception as e:
         logging.error(f"Unexpected error: {e}")
 
+# -----------------------------------------------------------------------
+# Main execution
+# -----------------------------------------------------------------------
 if __name__ == "__main__":
     list_files_in_bucket()
     download_file()
