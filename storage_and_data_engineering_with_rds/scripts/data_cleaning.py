@@ -56,7 +56,7 @@ def data_cleaning(data):
 # -----------------------------------------------------------------------
 def upload_cleaned_data(data, bucket_name = BUCKET_NAME, s3_key = S3_PROCESSED_UPLOAD_KEY):
     logging.info("Uploading cleaned data to S3...")
-    data.to_csv(f"s3://{bucket_name}/{s3_key}")
+    data.to_csv(f"s3://{bucket_name}/{s3_key}", index=False)
     logging.info(f"Upload successful: s3://{bucket_name}/{s3_key}")
 
 # -----------------------------------------------------------------------
