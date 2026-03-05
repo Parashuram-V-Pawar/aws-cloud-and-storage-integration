@@ -7,6 +7,9 @@ from dotenv import load_dotenv
 # -----------------------------------------------------------------------
 load_dotenv()
 
+# -----------------------------------------------------------------------
+# Database connection functions
+# -----------------------------------------------------------------------
 def get_connection():
     conn = pyodbc.connect(
         f"DRIVER={{ODBC Driver 18 for SQL Server}};"
@@ -18,7 +21,9 @@ def get_connection():
     )
     return conn
 
-
+# -----------------------------------------------------------------------
+# Get cursor and connection for executing queries
+# -----------------------------------------------------------------------
 def get_cursor():
     conn = get_connection()
     return conn.cursor(), conn
