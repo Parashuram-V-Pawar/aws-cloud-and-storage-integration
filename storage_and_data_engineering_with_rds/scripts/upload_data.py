@@ -2,14 +2,14 @@
 import os
 import logging
 from botocore.exceptions import *
-from config.s3_client_config import get_s3_client, BUCKET_NAME, LOCAL_UPLOAD_FILE, S3_RAW_UPLOAD_KEY
+from config.s3_client_config import get_s3_client, BUCKET_NAME
 
 logging.basicConfig(level=logging.INFO)
 
 # -----------------------------------------------------------------------
 # Function to upload file to S3
 # -----------------------------------------------------------------------
-def upload_file(local_file = LOCAL_UPLOAD_FILE, s3_key = S3_RAW_UPLOAD_KEY, bucket_name = BUCKET_NAME):
+def upload_file(local_file = "data/superstore_sales.csv",bucket_name = BUCKET_NAME):
     s3 = get_s3_client()
     if not os.path.exists(local_file):
         logging.error("Local file does not exist.")
@@ -18,9 +18,9 @@ def upload_file(local_file = LOCAL_UPLOAD_FILE, s3_key = S3_RAW_UPLOAD_KEY, buck
         s3.upload_file(
             local_file,
             bucket_name,
-            s3_key
+            "raw/superstore_sales.csv"
         )
-        logging.info(f"Upload successful: s3://{bucket_name}/{s3_key}")
+        logging.info(f"Upload successful: s3://{bucket_name}/raw/superstore_sales.csv")
     except FileNotFoundError:
         logging.error("The specified file was not found.")
     except NoCredentialsError:

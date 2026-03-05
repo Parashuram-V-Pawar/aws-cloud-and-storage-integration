@@ -2,9 +2,10 @@
 import os
 import logging
 from botocore.exceptions import *
-from config.s3_client_config import get_s3_client, BUCKET_NAME, LOCAL_DOWNLOAD_FILE, S3_RAW_UPLOAD_KEY
+from config.s3_client_config import get_s3_client, BUCKET_NAME
 
 logging.basicConfig(level=logging.INFO)
+# Local File Paths
 
 # -----------------------------------------------------------------------
 # Function to list files in S3 bucket
@@ -24,7 +25,7 @@ def list_files_in_bucket(bucket_name = BUCKET_NAME):
 # -----------------------------------------------------------------------
 # Function to download a files from S3 bucket
 # -----------------------------------------------------------------------
-def download_file(local_download_file = LOCAL_DOWNLOAD_FILE, s3_key = S3_RAW_UPLOAD_KEY, bucket_name = BUCKET_NAME):
+def download_file(local_download_file = "download/superstore_sales.csv", s3_key = "raw/superstore_sales.csv", bucket_name = BUCKET_NAME):
     s3 = get_s3_client()
     directory = os.path.dirname(local_download_file)
     # Checks if download directory exists, if not creates it
