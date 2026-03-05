@@ -54,7 +54,7 @@ logging.info("Data downloaded successfully from S3.")
 # Bulk insert data into the 'superstore_sales' table
 # -----------------------------------------------------------------------
 logging.info("Bulk inserting data into the table...")
-df = pd.read_csv("download/cleaned_superstore_sales.csv")
+supersales_df = pd.read_csv("download/cleaned_superstore_sales.csv")
 
 cursor.fast_executemany = True
 try:
@@ -67,7 +67,7 @@ try:
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """
-    cursor.executemany(insert_query, df.values.tolist())
+    cursor.executemany(insert_query, supersales_df.values.tolist())
     conn.commit()
     logging.info("Data inserted successfully into 'superstore_sales' table.")
 except Exception as e:
