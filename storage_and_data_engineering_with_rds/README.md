@@ -15,6 +15,7 @@ link: https://github.com/Parashuram-V-Pawar/datasets/blob/4c4e6d581d59cfe4c37df4
 ## Technology and Services used
 - Cloud Platform: AWS
 - AWS Services:
+    - Amazon EC2 - Linux Instance
     - Amazon S3 – Data Lake storage
     - Amazon RDS – Managed relational database
 - Programming Language: Python 3
