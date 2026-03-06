@@ -5,8 +5,6 @@
 - This project demonstrates a cloud-based data engineering pipeline built using AWS services and Python.
 - The pipeline ingests a CSV dataset, stores raw data in Amazon S3, performs data cleaning and transformations using Python (Pandas), generates analytical datasets, and stores structured data in an AWS RDS database.
 
-The goal is to simulate a real-world data engineering workflow, including ingestion, processing, storage, and analytical querying.
-
 ---
 ## Dataset
 link: https://github.com/Parashuram-V-Pawar/datasets/blob/4c4e6d581d59cfe4c37df47c558e12e8f8729213/superstore_sales.csv
